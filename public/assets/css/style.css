@@ -1,0 +1,9 @@
+body main article.entry figure.entry-thumbnail img {
+  width: auto;
+  max-height: 227px;
+}
+body main article.entry footer.entry-footer a {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

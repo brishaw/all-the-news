@@ -1,0 +1,27 @@
+{
+  "name": "all-the-news",
+  "version": "1.0.0",
+  "description": "View and leave comments on the latest news",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.14",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brishaw/all-the-news.git"
+  },
+  "author": "Brian Shaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brishaw/all-the-news/issues"
+  },
+  "homepage": "https://github.com/brishaw/all-the-news#readme"
+}

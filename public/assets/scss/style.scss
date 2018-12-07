@@ -1,0 +1,34 @@
+
+
+body {
+
+  main {
+
+    article {
+
+      &.entry {
+
+        figure {
+
+          &.entry-thumbnail {
+
+            img {
+              width: auto;
+              max-height: 227px;
+            }
+          }
+        }
+        footer {
+          
+          &.entry-footer {
+
+            a {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+} // body
