@@ -50,9 +50,9 @@ $.getJSON("/articles", function (data) {
     var formTime = data[i].time;
     var newFormTime = new Date(formTime);
 
-    var entryMonth = $("<span class='entry-month'>").html(newFormTime);
-    entryDate.append(entryMonth);
-console.log(data[i].time);
+    // var entryMonth = $("<span class='entry-month'>").html(newFormTime);
+    // entryDate.append(entryMonth);
+    // console.log(data[i].time);
     //-------
 
     var entryHeader = $("<header class='entry-header'>");
@@ -109,6 +109,8 @@ console.log(data[i].time);
     var saveArticlePlus = $("<i class='fa fa-plus'>");
     saveArticleSpan.append(saveArticlePlus);
 
+    var commentNote = $("<a class='btn addComment'><i class='fas fa-comment fa-3x'>");
+    entryFooter.append(commentNote);
 
 
 

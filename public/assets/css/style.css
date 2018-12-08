@@ -5,5 +5,13 @@ body main article.entry figure.entry-thumbnail img {
 body main article.entry footer.entry-footer a {
   cursor: pointer;
 }
+body main article.entry footer.entry-footer .addComment {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
 
 /*# sourceMappingURL=style.css.map */

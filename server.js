@@ -27,21 +27,30 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
+// mongoose.connect("mongodb://localhost/allTheNewsdb", { useNewUrlParser: true });
 
-//mongoose.connect("mongodb://localhost/allTheNewsdb", { useNewUrlParser: true });
+var databaseUri = "mongodb://localhost/allTheNewsdb";
+
+if (process.env.MONGODB_URI) {
+
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(databaseUri);
+}
+
+ var db = mongoose.connection;
+
+ db.on("error", function(err){
+   console.log("Mongoose Error: ", err);
+ });
+
+ db.once("open", function() {
+   console.log("Mongoose connection successful...");
+ })
+
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/allTheNewsdb";
 
 // mongoose.connect(MONGODB_URI);
-
-// Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/allTheNewsdb";
-
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
-
-
 
 // routes
 

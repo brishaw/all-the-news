@@ -2,7 +2,7 @@
   "name": "all-the-news",
   "version": "1.0.0",
   "description": "View and leave comments on the latest news",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
@@ -12,7 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
