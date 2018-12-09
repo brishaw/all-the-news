@@ -2,16 +2,23 @@ body main article.entry figure.entry-thumbnail img {
   width: auto;
   max-height: 227px;
 }
+body main article.entry .entry-header .title-bordered {
+  padding-right: 7px;
+}
+body main article.entry .entry-excerpt p {
+  padding: 7px;
+}
 body main article.entry footer.entry-footer a {
   cursor: pointer;
 }
 body main article.entry footer.entry-footer .addComment {
-  position: absolute;
-  bottom: 5px;
+  clear: both;
+  width: max-content;
   left: 0;
+  margin: 0 auto;
+  position: absolute;
   right: 0;
-  margin: auto;
-  text-align: center;
+  bottom: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

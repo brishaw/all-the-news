@@ -49,10 +49,11 @@ $.getJSON("/articles", function (data) {
     // format time variable
     var formTime = data[i].time;
     var newFormTime = new Date(formTime);
+    var newFormMonth = newFormTime.getMonth();
 
-    // var entryMonth = $("<span class='entry-month'>").html(newFormTime);
-    // entryDate.append(entryMonth);
-    // console.log(data[i].time);
+    var entryMonth = $("<span class='entry-month'>").html(newFormMonth);
+    entryDate.append(entryMonth);
+    console.log(data[i].time);
     //-------
 
     var entryHeader = $("<header class='entry-header'>");
@@ -93,7 +94,7 @@ $.getJSON("/articles", function (data) {
 
     var pullLeft = $("<div class='pull-left'>").text("Posted By ");
     entryFooter.append(pullLeft);
-
+          
     var postedBy = $("<a class='dotted-link1'>").html("Brian");
     pullLeft.append(postedBy);
 
@@ -112,6 +113,9 @@ $.getJSON("/articles", function (data) {
     var commentNote = $("<a class='btn addComment'><i class='fas fa-comment fa-3x'>");
     entryFooter.append(commentNote);
 
+    var theComment = $("<div id='notes'>");
+    entryFooter.append(theComment);
+
 
 
 
@@ -122,12 +126,12 @@ $.getJSON("/articles", function (data) {
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function () {
+$(document).on("click", ".addComment", function () {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
-
+console.log(thisId);
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
