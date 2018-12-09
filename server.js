@@ -48,10 +48,6 @@ if (process.env.MONGODB_URI) {
    console.log("Mongoose connection successful...");
  })
 
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/allTheNewsdb";
-
-// mongoose.connect(MONGODB_URI);
-
 // routes
 
 // default route
@@ -99,8 +95,6 @@ app.get("/scrape", function (req, res) {
         .children(".meta__container")
         .children("time")
         .attr("datetime")
-
-
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)

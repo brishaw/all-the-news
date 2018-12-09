@@ -115,12 +115,6 @@ $.getJSON("/articles", function (data) {
 
     var theComment = $("<div id='notes'>");
     entryFooter.append(theComment);
-
-
-
-
-
-    // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
   }
 });
 
