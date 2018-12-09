@@ -50,10 +50,13 @@ $.getJSON("/articles", function (data) {
     var formTime = data[i].time;
     var newFormTime = new Date(formTime);
     var newFormMonth = newFormTime.getMonth();
+    var newFormDay = newFormTime.getDay();
+
+    entryDay.append(newFormDay);
 
     var entryMonth = $("<span class='entry-month'>").html(newFormMonth);
     entryDate.append(entryMonth);
-    console.log(data[i].time);
+    // console.log(data[i].time);
     //-------
 
     var entryHeader = $("<header class='entry-header'>");
@@ -113,18 +116,21 @@ $.getJSON("/articles", function (data) {
     var commentNote = $("<a class='btn addComment'><i class='fas fa-comment fa-3x'>");
     entryFooter.append(commentNote);
 
-    var theComment = $("<div id='notes'>");
-    entryFooter.append(theComment);
+    // var theComment = $("<div id='notes'>");
+    // entryFooter.append(theComment);
   }
 });
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", ".addComment", function () {
+$(document).on("click", ".addComment", function (event) {
   // Empty the notes from the note section
+
+  $('#articleModal').modal();
+
   $("#notes").empty();
   // Save the id from the p tag
-  var thisId = $(this).attr("data-id");
+  var thisId = $(event.target).parentsUntil("h4")[2].children[2].children[0].children[0];
 console.log(thisId);
   // Now make an ajax call for the Article
   $.ajax({
