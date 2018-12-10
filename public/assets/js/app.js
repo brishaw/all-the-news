@@ -104,7 +104,7 @@ $.getJSON("/articles", function (data) {
     var pullRight = $("<div class='pull-right'>");
     entryFooter.append(pullRight);
     
-    var saveArticle = $("<a class='dotted-link1 addArticle'>");
+    var saveArticle = $("<a id='savenote' class='dotted-link1 addArticle'>");
     pullRight.append(saveArticle);
 
     var saveArticleSpan = $("<span>").html("Save this story ");
@@ -130,7 +130,7 @@ $(document).on("click", ".addComment", function (event) {
 
   $("#notes").empty();
   // Save the id from the p tag
-  var thisId = $(event.target).parentsUntil("h4")[2].children[2].children[0].children[0];
+  var thisId = $(event.target).parentsUntil("h4")[2].children[2].children[0].children[0].getAttribute("data-id");
 console.log(thisId);
   // Now make an ajax call for the Article
   $.ajax({
@@ -143,11 +143,11 @@ console.log(thisId);
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#notes").append("<input id='titleinput' name='title' >");
+      $("#notes").append("<input type='text' class='form-control' placeholder='Comment title' id='titleinput' name='title'><br />");
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#notes").append("<textarea class='form-control' id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#footer-notes").append("<button class='btn btn-primary' data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
       // If there's a note in the article
       if (data.note) {
@@ -161,9 +161,9 @@ console.log(thisId);
 
 // When you click the savenote button
 $(document).on("click", "#savenote", function () {
-  // Grab the id associated with the article from the submit button
-  var thisId = $(this).attr("data-id");
-
+  $('#saveModal').modal();
+  var thisId = $(event.target).parentsUntil(".entry-header")[3].children[2].children[0].children[0].getAttribute("data-id");
+  console.log(thisId);
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",

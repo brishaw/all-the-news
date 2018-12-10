@@ -20,5 +20,13 @@ body main article.entry footer.entry-footer .addComment {
   right: 0;
   bottom: 0;
 }
+body .modal .modal-header .close {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+}
+body .modal .modal-body h4 {
+  padding-top: 20px;
+}
 
 /*# sourceMappingURL=style.css.map */

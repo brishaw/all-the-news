@@ -56,4 +56,23 @@ body {
     }
   }
 
+  // modals
+  .modal {
+    
+    .modal-header {
+      
+      .close {
+        position: absolute;
+        top: 17px;
+        right: 17px;
+      }
+    }
+
+    .modal-body {
+
+      h4 {
+        padding-top: 20px;
+      }
+    }
+  }
 } // body
