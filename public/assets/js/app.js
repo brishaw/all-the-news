@@ -104,17 +104,20 @@ $.getJSON("/articles", function (data) {
     var pullRight = $("<div class='pull-right'>");
     entryFooter.append(pullRight);
     
-    var saveArticle = $("<a id='savenote' class='dotted-link1 addArticle'>");
-    pullRight.append(saveArticle);
+    // var saveArticle = $("<a class='dotted-link1 addArticle'>");
+    // pullRight.append(saveArticle);
 
-    var saveArticleSpan = $("<span>").html("Save this story ");
-    saveArticle.append(saveArticleSpan);
+    // var saveArticleSpan = $("<span>").html("Save this story ");
+    // saveArticle.append(saveArticleSpan);
 
-    var saveArticlePlus = $("<i class='fa fa-plus'>");
-    saveArticleSpan.append(saveArticlePlus);
+    // var saveArticlePlus = $("<i class='fa fa-plus'>");
+    // saveArticleSpan.append(saveArticlePlus);
+
+    // var commentNote = $("<a class='btn addComment'><i class='fas fa-comment fa-3x'>");
+    // entryFooter.append(commentNote);
 
     var commentNote = $("<a class='btn addComment'><i class='fas fa-comment fa-3x'>");
-    entryFooter.append(commentNote);
+    pullRight.append(commentNote);
 
     // var theComment = $("<div id='notes'>");
     // entryFooter.append(theComment);
@@ -130,7 +133,7 @@ $(document).on("click", ".addComment", function (event) {
 
   $("#notes").empty();
   // Save the id from the p tag
-  var thisId = $(event.target).parentsUntil("h4")[2].children[2].children[0].children[0].getAttribute("data-id");
+  var thisId = $(event.target).parentsUntil("h4")[3].children[2].children[0].children[0].getAttribute("data-id");
 console.log(thisId);
   // Now make an ajax call for the Article
   $.ajax({
@@ -153,16 +156,18 @@ console.log(thisId);
       if (data.note) {
         // Place the title of the note in the title input
         $("#titleinput").val(data.note.title);
+
         // Place the body of the note in the body textarea
         $("#bodyinput").val(data.note.body);
+        
       }
     });
 });
 
 // When you click the savenote button
 $(document).on("click", "#savenote", function () {
-  $('#saveModal').modal();
-  var thisId = $(event.target).parentsUntil(".entry-header")[3].children[2].children[0].children[0].getAttribute("data-id");
+  //$('#saveModal').modal();
+  var thisId = $(this).attr("data-id");
   console.log(thisId);
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
@@ -186,4 +191,6 @@ $(document).on("click", "#savenote", function () {
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
+
+  //$("#articleModal").modal("hide");
 });

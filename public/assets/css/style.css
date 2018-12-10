@@ -12,13 +12,8 @@ body main article.entry footer.entry-footer a {
   cursor: pointer;
 }
 body main article.entry footer.entry-footer .addComment {
-  clear: both;
-  width: max-content;
-  left: 0;
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  font-size: 17px;
+  padding: 0;
 }
 body .modal .modal-header .close {
   position: absolute;
