@@ -1,8 +1,9 @@
-// Grab the articles as a json
+// get the article information as a json
 $.getJSON("/articles", function (data) {
-  // For each one
+
   for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
+
+    // display the article information on the page
 
     var holder = $("<article>");
     
@@ -48,9 +49,12 @@ $.getJSON("/articles", function (data) {
     //-------
     // format time variable
     var formTime = data[i].time;
-    var newFormTime = new Date(formTime);
-    var newFormMonth = newFormTime.getMonth();
-    var newFormDay = newFormTime.getDay();
+    console.log(formTime); // time from the onion
+    var newFormMonth = moment(formTime).format("MMM");
+    var newFormDay = moment(formTime).format("DD");
+    // var newFormTime = new Date(formTime);
+    // var newFormMonth = newFormTime.getMonth();
+    // var newFormDay = newFormTime.getDay();
 
     entryDay.append(newFormDay);
 
@@ -125,16 +129,17 @@ $.getJSON("/articles", function (data) {
 });
 
 
-// Whenever someone clicks a p tag
+// Whenever someone clicks the comment icon
 $(document).on("click", ".addComment", function (event) {
-  // Empty the notes from the note section
 
+// Empty the notes from the note section
+$("#notes").empty();
+$("#footer-notes").empty();
+  // open modal
   $('#articleModal').modal();
-
-  $("#notes").empty();
-  // Save the id from the p tag
+  // Save the id
   var thisId = $(event.target).parentsUntil("h4")[3].children[2].children[0].children[0].getAttribute("data-id");
-console.log(thisId);
+
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
@@ -149,6 +154,9 @@ console.log(thisId);
       $("#notes").append("<input type='text' class='form-control' placeholder='Comment title' id='titleinput' name='title'><br />");
       // A textarea to add a new note body
       $("#notes").append("<textarea class='form-control' id='bodyinput' name='body'></textarea>");
+
+      // another close button
+      $("#footer-notes").append("<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>")
       // A button to submit a new note, with the id of the article saved to it
       $("#footer-notes").append("<button class='btn btn-primary' data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
@@ -159,7 +167,7 @@ console.log(thisId);
 
         // Place the body of the note in the body textarea
         $("#bodyinput").val(data.note.body);
-        
+        console.log(data.note);
       }
     });
 });

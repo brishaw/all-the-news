@@ -1,10 +1,9 @@
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var moment = require("moment");
 
-// Our scraping tools
-// Axios is a promised-based http library, similar to jQuery's Ajax method
-// It works on the client and on the server
+// require the scraping tools for this app; axios and cheerio
 var axios = require("axios");
 var cheerio = require("cheerio");
 
@@ -16,18 +15,16 @@ var PORT = process.env.PORT || 3000;
 // Initialize Express
 var app = express();
 
-// Configure middleware
-
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Make public a static folder
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-// mongoose.connect("mongodb://localhost/allTheNewsdb", { useNewUrlParser: true });
+// connect to the mongo DB
 
 var databaseUri = "mongodb://localhost/allTheNewsdb";
 
@@ -66,7 +63,7 @@ app.get("/scrape", function (req, res) {
       // save an empty result object
       var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
+      // add text, links and images and save them as properties of the empty result object
       result.title = $(this)
         .children("header")
         .children("h1")
@@ -108,8 +105,8 @@ app.get("/scrape", function (req, res) {
         });
     });
 
-    // Send a message to the client
-    // res.send("Scrape Complete");
+    // keep the user on the page after scraping
+    console.log(result);
     res.redirect("/");
   });
 });
