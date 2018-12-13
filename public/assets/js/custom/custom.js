@@ -104,9 +104,6 @@
       //Sticky Header
       this.stickyHeader();
 
-      //Google Map Address
-      this.GMapAddress();
-
     },
 
     MainNav: function(){
