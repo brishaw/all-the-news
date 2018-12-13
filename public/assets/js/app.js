@@ -211,8 +211,8 @@ $(document).ready(function () {
     $.ajax(`/note/${id}`, {
       type: "DELETE"
     }).then(function (event) {
-      $('#note-modal').modal('toggle');
-      
+      // $('#note-modal').modal('toggle');
+      location.reload();
       console.log("deleted comment....???");
     });
   });
