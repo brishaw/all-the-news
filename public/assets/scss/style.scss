@@ -46,6 +46,17 @@ body {
               padding: 0;
             }
           }
+        } // footer
+
+        #comments {
+
+          .list-group-item {
+            overflow: auto;
+            
+            .btn-deletenote {
+              float: right;
+            }
+          }
         }
       }
     }

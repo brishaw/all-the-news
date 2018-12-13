@@ -15,6 +15,12 @@ body main article.entry footer.entry-footer .addComment {
   font-size: 17px;
   padding: 0;
 }
+body main article.entry #comments .list-group-item {
+  overflow: auto;
+}
+body main article.entry #comments .list-group-item .btn-deletenote {
+  float: right;
+}
 body .modal .modal-header .close {
   position: absolute;
   top: 17px;
