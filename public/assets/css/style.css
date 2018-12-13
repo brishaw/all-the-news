@@ -30,4 +30,16 @@ body .modal .modal-body h4 {
   padding-top: 20px;
 }
 
+@media only screen and (max-width: 736px) {
+  body main article.entry figure.entry-thumbnail img {
+    width: 100%;
+  }
+  body main article.entry .entry-body {
+    padding-bottom: 0;
+  }
+  body main article.entry .entry-header h4 {
+    padding-left: 20px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
